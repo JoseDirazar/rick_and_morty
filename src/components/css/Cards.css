@@ -1,0 +1,9 @@
+.CardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .CardsContainer .Card {
+    margin: 10px;
+  }

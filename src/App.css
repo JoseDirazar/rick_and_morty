@@ -1,12 +1,54 @@
-
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App .navContainer {
+  margin-top: 20px; /* Espacio entre el borde superior y el componente Nav */
+}
+
+.App .cardContainer {
+  flex-grow: 1; /* Ocupar el espacio disponible restante */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; /* Alinear las cartas al inicio verticalmente */
+  padding: 20px; /* Espacio interno para las cartas */
+}
+
+.divCard {
+  background-color: #c13c02;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.divCard button {
+  background-color: #601a75;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.divCard img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.divCard h2 {
+  font-size: 15px;
+  margin-bottom: 5px;
 }

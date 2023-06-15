@@ -1,0 +1,20 @@
+.divCard {
+    
+    background-color: #0d185a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .divCard h2 {
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .divCard img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
