@@ -8,7 +8,7 @@ import About from './components/About';
 import Detail from './components/Detail';
 import Form from './components/Form';
 import Error404 from './components/Error404';
-import Error404 from './components/Error404';
+import Favorites from './components/Favorites';
 
 const EMAIL = 'jo@gmail.com';
 const PASSWORD = '123asd';
@@ -29,7 +29,8 @@ function App() {
    }, [access]);
 
    const [characters, setCharacters] = useState([])
-   //console.log(characters)
+   console.log(characters)
+   
    function onSearch(id) {
       //console.log(id)
         
@@ -42,6 +43,12 @@ function App() {
          window.alert('¡No hay personajes con este ID!');
       }
       
+   }).catch(error => {
+      if (error.response && error.response.status === 404) {
+         window.alert('No hay personajes con ese ID!');
+      } else {
+         console.error('Error en la solicitud:', error);
+      }
    });
    }
 
@@ -51,6 +58,7 @@ function App() {
       const notID = characters.filter(e => e.id !== idBuscado)
       setCharacters(notID)
    }
+
    const location = useLocation()
    const {id} = useParams()
    
@@ -58,13 +66,14 @@ function App() {
       <div className='App' >
          {/* {location.pathname !== "/" && location.pathname !== "/home" && location.pathname !== "/about" && location.pathname !== `/detail/${id}` ? <Error404 /> : null} */}
          
-         {location.pathname !== '/' && <Nav onSearch={onSearch} />}
+         {location.pathname !== '/' && <Nav onSearch={onSearch} setAcces={setAccess}/>}
          <Routes>
             <Route path="/" element={<Form  login={login}/>}/>
-            <Route path="/home" element={<Cards characters={characters} onClose={onClose}/* id={characters.id} *//>}/>
+            <Route path="/home" element={<Cards characters={characters} onClose={onClose}/>}/>
             <Route path="/about" element={<About />}/>
             <Route path="/detail/:id" element={<Detail />}/>
             <Route path="*" element={<Error404/>} />
+            <Route path="/favorites" element={<Favorites/>} />
          </Routes>
          
          
