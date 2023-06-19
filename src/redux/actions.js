@@ -1,12 +1,30 @@
-import { ID, NOMBRE, REMOVE_FAV, ADD_FAV} from "./accionTypes";
-import { useParams } from "react-router-dom";
-export const obtenerNombre = () => {
-    return {type: NOMBRE, payload: ""}
+import { REMOVE_FAV, ADD_FAV, FILTER, ORDER} from "./accionTypes";
+
+
+export const filterCards = (gender) => {
+  return {
+    type: FILTER,
+    payload: gender
+  }
 }
+export const orderCards = (orden) => {
+  return {
+    type: ORDER,
+    payload: orden
+  }
+}
+
 
 export const addFav = (character) => {
   return {type:ADD_FAV, payload: character}
 }
+
+export const removeFav = (id) => {
+return {
+  type: REMOVE_FAV,
+  payload: id
+  };
+};
 
 /* export const getCard = (id) => {
     return async function(dispatch) {
@@ -22,11 +40,4 @@ export const addFav = (character) => {
     };
   }; */
  
-  
-export const removeFav = (id) => {
-  return {
-    type: REMOVE_FAV,
-    payload: id
-    };
-  };
   

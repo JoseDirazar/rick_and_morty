@@ -6,5 +6,6 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose /
 
 export const store = createStore(reducer, composeEnhancer(applyMiddleware(ThunkMiddleware)))
 
+
 // el segundo arg de store permite hacer peticiones a Api/servidor
 

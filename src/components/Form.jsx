@@ -1,6 +1,10 @@
 import { useState } from "react"
 import validateUserData from "../validation"
-export default function Form({login}) {
+import { accessTrue } from "../redux/actions";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+export default function Form({login, accessTrue}) {
+    
     
     const [userData, setUserData] = useState({
         email: "",
@@ -37,3 +41,4 @@ export default function Form({login}) {
         <button type="submit">Submit</button>
     </form>
 }
+

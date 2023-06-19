@@ -10,26 +10,37 @@ import Form from './components/Form';
 import Error404 from './components/Error404';
 import Favorites from './components/Favorites';
 
-const EMAIL = 'jo@gmail.com';
-const PASSWORD = '123asd';
 
 function App() {
+
+   const EMAIL = 'jo@gmail.com';
+   const PASSWORD = '123123';
+
    const navigate = useNavigate();
+
    const [access, setAccess] = useState(false);
+
+   
 
    function login(userData) {
       if (userData.password === PASSWORD && userData.email === EMAIL) {
          setAccess(true);
-         navigate('/home');
+         return navigate('/home');
       }
+      return alert("No es el usuario")
    } 
 
    useEffect(() => {
-      !access && navigate('/');
+      !access  && navigate('/home') ;
    }, [access]);
 
+   function logOut() {
+      setAccess(false);
+      navigate("/");
+   }
+
    const [characters, setCharacters] = useState([])
-   console.log(characters)
+   //console.log(characters)
    
    function onSearch(id) {
       //console.log(id)
@@ -60,15 +71,14 @@ function App() {
    }
 
    const location = useLocation()
-   const {id} = useParams()
    
    return (
       <div className='App' >
          {/* {location.pathname !== "/" && location.pathname !== "/home" && location.pathname !== "/about" && location.pathname !== `/detail/${id}` ? <Error404 /> : null} */}
          
-         {location.pathname !== '/' && <Nav onSearch={onSearch} setAcces={setAccess}/>}
+         {location.pathname !== '/' && <Nav onSearch={onSearch} setAcces={setAccess} logOut={logOut}/>}
          <Routes>
-            <Route path="/" element={<Form  login={login}/>}/>
+            <Route path="/" element={<Form  login={login}/>} />
             <Route path="/home" element={<Cards characters={characters} onClose={onClose}/>}/>
             <Route path="/about" element={<About />}/>
             <Route path="/detail/:id" element={<Detail />}/>
