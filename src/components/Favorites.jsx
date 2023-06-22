@@ -1,10 +1,13 @@
+import React from "react"
 import Card from "./Card"
 import { useState } from "react"
-import { connect, useDispatch } from "react-redux"
+import { connect, useDispatch, useSelector, ReactReduxContext } from "react-redux"
 import { orderCards, filterCards } from "../redux/actions"
 
 const Favorites = ({myFavorites}) => {
-
+    
+    
+    const store = useSelector(state => state.myFavorites)
     const dispatch = useDispatch()
     
     const [aux, setAux] = useState(false)
@@ -28,7 +31,7 @@ const Favorites = ({myFavorites}) => {
             <option value="unknown">unknown</option>
             <option value="allCharacters">All Characters</option>
         </select> 
-        {myFavorites?.map(fav => { 
+        {store?.map(fav => { 
             return (
                 <Card key={fav.id} 
                 id={fav.id} 
@@ -43,8 +46,8 @@ const Favorites = ({myFavorites}) => {
         </div>
     )
 }  
-//export default Favorites
-const mapStateToProps = (state) => {
+export default Favorites
+/* const mapStateToProps = (state) => {
     return {
         myFavorites: state.myFavorites
     }
@@ -52,4 +55,4 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     null
-)(Favorites)
+)(Favorites) */
